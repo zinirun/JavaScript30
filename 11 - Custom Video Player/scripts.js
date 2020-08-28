@@ -43,6 +43,20 @@ function scrub(e) {
   video.currentTime = scrubTime;
 }
 
+const fullButton = player.querySelector('#fullscreen');
+
+function toggleFullScreen() {
+  if (video.requestFullScreen) {
+    video.requestFullScreen();
+  } else if (video.webkitRequestFullScreen) {
+    video.webkitRequestFullScreen();
+  } else if (video.mozRequestFullScreen) {
+    video.mozRequestFullScreen();
+  }
+}
+
+fullButton.addEventListener('click', toggleFullScreen);
+
 video.addEventListener('click', togglePlay);
 video.addEventListener('play', updateButton);
 video.addEventListener('pause', updateButton);
